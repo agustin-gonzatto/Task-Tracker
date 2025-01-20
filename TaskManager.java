@@ -1,7 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 
-public class taskManager {
+public class TaskManager {
 
     private static final String FILE_PATH = "tasks.json";
 
@@ -21,6 +21,8 @@ public class taskManager {
 
     public static void addTask(String description){
         verifyFile();
+        Task tas = new Task(1,description,"prueba");
+        System.out.println(tas);
     }
 
     public static void updateTask(int id, String description){

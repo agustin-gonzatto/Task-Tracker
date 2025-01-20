@@ -1,9 +1,9 @@
-public class task {
+public class Task {
     int id;
     String description;
     String status;
 
-    task (int id,String description, String status){
+    Task(int id, String description, String status){
         this.id = id;
         this.description = description;
         this.status = status;
@@ -11,6 +11,6 @@ public class task {
 
     @Override
     public String toString() {
-        return "";
+        return "{\"id\":\""+id+"\",\"description\":\""+description+"\",\"status\":\""+status+"\"}";
     }
 }

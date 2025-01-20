@@ -1,4 +1,4 @@
-public class taskCLI {
+public class TaskCLI {
     public static void main(String[] args){
         if(args.length == 0){
             System.out.println("Usage: java -jar TaskCLI.jar <task name>");
@@ -11,7 +11,7 @@ public class taskCLI {
                 System.out.println("Missing task description.");
                 } else {
                     String description = args[1];
-                    taskManager.addTask(description);
+                    TaskManager.addTask(description);
                     System.out.println("Task added successfully.");
                 }
                 break;
@@ -20,7 +20,7 @@ public class taskCLI {
                     System.out.println("Please specify task ID and description.");
                 } else {
                     int id = Integer.parseInt(args[1]); String newDescription = args[2];
-                    taskManager.updateTask(id, newDescription);
+                    TaskManager.updateTask(id, newDescription);
                     System.out.println("Task updated successfully.");
                 } break;
             case "delete":
@@ -28,14 +28,14 @@ public class taskCLI {
                     System.out.println("Please specify task ID to delete.");
                 } else {
                     int id = Integer.parseInt(args[1]);
-                    taskManager.deleteTask(id); System.out.println("Tarea eliminada exitosamente.");
+                    TaskManager.deleteTask(id); System.out.println("Tarea eliminada exitosamente.");
                 } break;
             case "mark-in-progress":
                 if (args.length < 2) {
                     System.out.println("Please specify task ID to mark in-progress.");
                 } else {
                     int id = Integer.parseInt(args[1]);
-                    taskManager.markInProgress(id);
+                    TaskManager.markInProgress(id);
                     System.out.println("Task marked in-progress successfully.");
                 } break;
             case "mark-done":
@@ -43,15 +43,15 @@ public class taskCLI {
                     System.out.println("Please specify task ID to mark done.");
                 } else {
                     int id = Integer.parseInt(args[1]);
-                    taskManager.markDone(id);
+                    TaskManager.markDone(id);
                     System.out.println("Task marked done successfully.");
                 } break;
             case "list":
                 if (args.length < 2) {
-                    taskManager.listTasks();
+                    TaskManager.listTasks();
                 } else {
                     String status = args[1];
-                    taskManager.listTasksByStatus(status);
+                    TaskManager.listTasksByStatus(status);
                 } break;
             default: System.out.println("Undefined command."); }
     }
