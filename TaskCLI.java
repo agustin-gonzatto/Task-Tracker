@@ -1,7 +1,7 @@
 public class TaskCLI {
     public static void main(String[] args){
         if(args.length == 0){
-            System.out.println("Usage: java -jar TaskCLI.jar <task name>");
+            System.out.println("Usage: java TaskCLI <task command>");
         }
 
         String command = args[0];
