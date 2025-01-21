@@ -12,7 +12,6 @@ public class TaskCLI {
                 } else {
                     String description = args[1];
                     TaskManager.addTask(description);
-                    System.out.println("Task added successfully.");
                 }
                 break;
             case "update":
@@ -28,7 +27,7 @@ public class TaskCLI {
                     System.out.println("Please specify task ID to delete.");
                 } else {
                     int id = Integer.parseInt(args[1]);
-                    TaskManager.deleteTask(id); System.out.println("Tarea eliminada exitosamente.");
+                    TaskManager.deleteTask(id); System.out.println("Task deleted successfully.");
                 } break;
             case "mark-in-progress":
                 if (args.length < 2) {
