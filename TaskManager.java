@@ -19,12 +19,14 @@ public class TaskManager {
                 System.out.println("There was a problem creating the file.");
                 e.printStackTrace();
             }
+        }else{
+            exists = true;
         }
         return exists;
     }
 
     public static void addTask(String description){
-        if (!jsonExists(FILE_PATH)) {
+        if (jsonExists(FILE_PATH)) {
             List<Task> tasks = readTasks();
             int id = tasks.isEmpty() ? 1 : tasks.get(tasks.size() - 1).id + 1;
             Task newTask = new Task(id, description, "pending");
@@ -35,7 +37,7 @@ public class TaskManager {
     }
 
     public static void updateTask(int id, String newDescription){
-        if (!jsonExists(FILE_PATH)){
+        if (jsonExists(FILE_PATH)){
             List<Task> tasks = readTasks();
             for (Task task : tasks) {
                 if (task.getId() == id) {
@@ -50,7 +52,7 @@ public class TaskManager {
     }
 
     public static void deleteTask(int id){
-        if (!jsonExists(FILE_PATH)){
+        if (jsonExists(FILE_PATH)){
             List<Task> tasks = readTasks();
             for (Task task : tasks) {
                 if (task.getId() == id) {
@@ -62,7 +64,7 @@ public class TaskManager {
     }
 
     public static void markInProgress(int id){
-        if (!jsonExists(FILE_PATH)){
+        if (jsonExists(FILE_PATH)){
             List<Task> tasks = readTasks();
             for (Task task : tasks) {
                 if (task.getId() == id) {
@@ -74,7 +76,7 @@ public class TaskManager {
     }
 
     public static void markDone(int id){
-        if (!jsonExists(FILE_PATH)){
+        if (jsonExists(FILE_PATH)){
             List<Task> tasks = readTasks();
             for (Task task : tasks) {
                 if (task.getId() == id) {
@@ -86,7 +88,7 @@ public class TaskManager {
     }
 
     public static void listTasks(){
-        if (!jsonExists(FILE_PATH)){
+        if (jsonExists(FILE_PATH)){
             List<Task> tasks = readTasks();
             for (Task task : tasks) {
                 System.out.println(task);
@@ -95,7 +97,7 @@ public class TaskManager {
     }
 
     public static void listTasksByStatus(String status){
-        if (!jsonExists(FILE_PATH)){
+        if (jsonExists(FILE_PATH)){
             List<Task> tasks = readTasks();
             for (Task task : tasks) {
                 if (task.getStatus().equals(status)) {
@@ -107,7 +109,7 @@ public class TaskManager {
 
     public static List<Task> readTasks() {
         List<Task> tasks = new ArrayList<>();
-        if (!jsonExists(FILE_PATH)) {
+        if (jsonExists(FILE_PATH)) {
             try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
                 StringBuilder jsonBuilder = new StringBuilder();
                 String line;
@@ -145,7 +147,7 @@ public class TaskManager {
     }
 
     public static void writeTasks(List<Task> tasks) {
-        if (!jsonExists(FILE_PATH)) {
+        if (jsonExists(FILE_PATH)) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
                 writer.write("[");
                 for (int i = 0; i < tasks.size(); i++) {
