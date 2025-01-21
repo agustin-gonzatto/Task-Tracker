@@ -47,18 +47,13 @@ public class TaskManager {
                     System.out.println("Task id updated: " + task.getId());
                 }
             }
-            System.out.println("Task not found.");
         }
     }
 
     public static void deleteTask(int id){
         if (jsonExists(FILE_PATH)){
             List<Task> tasks = readTasks();
-            for (Task task : tasks) {
-                if (task.getId() == id) {
-                    tasks.remove(task);
-                }
-            }
+            tasks.removeIf(task -> task.getId() == id);
             writeTasks(tasks);
         }
     }
@@ -90,8 +85,10 @@ public class TaskManager {
     public static void listTasks(){
         if (jsonExists(FILE_PATH)){
             List<Task> tasks = readTasks();
-            for (Task task : tasks) {
-                System.out.println(task);
+            if (!tasks.isEmpty()) {
+                for (Task task : tasks) {
+                    System.out.println(task);
+                }
             }
         }
     }

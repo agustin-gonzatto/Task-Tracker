@@ -20,7 +20,6 @@ public class TaskCLI {
                 } else {
                     int id = Integer.parseInt(args[1]); String newDescription = args[2];
                     TaskManager.updateTask(id, newDescription);
-                    System.out.println("Task updated successfully.");
                 } break;
             case "delete":
                 if (args.length < 2) {
