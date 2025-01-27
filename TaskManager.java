@@ -114,7 +114,7 @@ public class TaskManager {
                     jsonBuilder.append(line.trim());
                 }
                 String json = jsonBuilder.toString();
-                if (!json.isEmpty()) {
+                if (json.length()>2) {
                     json = json.substring(1, json.length() - 1);
                     String[] taskArray = json.split("},\\{");
                     for (String taskString : taskArray) {
